@@ -15,9 +15,30 @@ class BinarySearchTree {
     return this._root;
   }
 
-  add(/* data */) {
-    throw new NotImplementedError("Not implemented");
-    // remove line with error and write your code here
+  add(data) {
+    const node = new Node(data);
+
+    if (!this._root) {
+      this._root = node;
+      return;
+    }
+
+    let curr = this._root;
+    while (true) {
+      if (data < curr.data) {
+        if (!curr.left) {
+          curr.left = node;
+          break;
+        }
+        curr = curr.left;
+      } else {
+        if (!curr.right) {
+          curr.right = node;
+          break;
+        }
+        curr = curr.right;
+      }
+    }
   }
 
   has(/* data */) {
